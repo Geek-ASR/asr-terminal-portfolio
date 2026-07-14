@@ -144,6 +144,15 @@ function App() {
     retro: 'text-[#f0e68c]',
   }), [theme]);
 
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = './Aditya_Rekhe_Resume.pdf';
+    link.download = 'Aditya_Rekhe_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleCommand = (command: string) => {
     if (!command.trim()) return;
     const trimmed = command.trim();
@@ -231,7 +240,8 @@ function App() {
           </div>
         );
       case 'resume':
-        return 'Resume ready for download. Connect with me to share the latest version.';
+        downloadResume();
+        return 'Resume downloaded! Check your downloads folder.';
       case 'clear':
         setHistory([]); return 'Terminal cleared.';
       case 'history':
@@ -352,15 +362,19 @@ function App() {
                         {line}
                       </motion.div>
                     ))}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.8 }} className="mt-6 space-y-3 text-terminal-accent">
-                      <div>█████╗ ███████╗██████╗</div>
-                      <div>██╔══██╗██╔════╝██╔══██╗</div>
-                      <div>███████║███████╗██████╔╝</div>
-                      <div>██╔══██║╚════██║██╔══██╗</div>
-                      <div>██║  ██║███████║██║  ██║</div>
-                      <div>╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝</div>
-                      <div className="pt-3 text-terminal-text">Aditya Surendra Rekhe</div>
-                      <div className="text-terminal-secondary">Software Engineer</div>
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.8 }} className="mt-6 space-y-4 text-terminal-accent">
+                      <div className="font-bold text-lg space-y-1 tracking-wider">
+                        <div>  █████╗   ███████╗  ██████╗</div>
+                        <div>  ██╔══██╗  ██╔════╝  ██╔══██╗</div>
+                        <div>  ███████║  ███████╗  ██████╔╝</div>
+                        <div>  ██╔══██║  ╚════██║  ██╔══██╗</div>
+                        <div>  ██║  ██║  ███████║  ██║  ██║</div>
+                        <div>  ╚═╝  ╚═╝  ╚══════╝  ╚═╝  ╚═╝</div>
+                      </div>
+                      <div className="pt-4 text-center space-y-2">
+                        <div className="text-terminal-text font-bold text-lg">Aditya Surendra Rekhe</div>
+                        <div className="text-terminal-secondary text-sm">Software Engineer • Pune, India</div>
+                      </div>
                     </motion.div>
                   </motion.div>
                 ) : (
@@ -400,7 +414,6 @@ function App() {
                         autoCorrect="off"
                         spellCheck={false}
                       />
-                      <span className="cursor-blink text-terminal-accent">█</span>
                     </div>
                   </motion.div>
                 )}
@@ -442,6 +455,9 @@ function App() {
                   </div>
                   <div>Open to ambitious product engineering and systems work.</div>
                 </div>
+                <button onClick={downloadResume} className="w-full rounded border border-terminal-accent/40 bg-terminal-accent/20 px-3 py-2 text-terminal-accent transition hover:border-terminal-accent hover:bg-terminal-accent/30">
+                  Download Resume →
+                </button>
                 <div className="flex gap-3 text-xl text-terminal-link">
                   <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><FaGithub /></a>
                   <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
