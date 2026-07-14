@@ -409,6 +409,14 @@ function App() {
 
             <div className="w-full border-t border-terminal-accent/20 bg-black/20 p-4 lg:w-[320px] lg:border-l lg:border-t-0">
               <div className="space-y-4 text-sm leading-7">
+                <div className="flex justify-center">
+                  <img src="/profile.jpeg" alt="Aditya Surendra Rekhe" className="h-40 w-40 rounded-lg border-2 border-terminal-accent/50 shadow-[0_0_30px_rgba(0,255,136,0.3)] object-cover" />
+                </div>
+                <div className="text-center">
+                  <div className="text-terminal-accent font-semibold">Aditya Surendra Rekhe</div>
+                  <div className="text-xs text-terminal-secondary">Software Engineer</div>
+                  <div className="text-xs text-terminal-secondary">Pune, India</div>
+                </div>
                 <div className="rounded border border-terminal-accent/20 bg-terminal-accent/10 p-3">
                   <div className="mb-2 flex items-center gap-2 text-terminal-accent">
                     <FaBrain /> <span>Focus</span>
