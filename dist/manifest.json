@@ -1,0 +1,15 @@
+{
+  "name": "ASR Terminal",
+  "short_name": "ASR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F0C",
+  "theme_color": "#0B0F0C",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
