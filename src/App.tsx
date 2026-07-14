@@ -145,8 +145,9 @@ function App() {
   }), [theme]);
 
   const downloadResume = () => {
+    const baseUrl = ((import.meta as any).env.BASE_URL) || '/';
     const link = document.createElement('a');
-    link.href = './Aditya_Rekhe_Resume.pdf';
+    link.href = `${baseUrl}Aditya_Rekhe_Resume.pdf`;
     link.download = 'Aditya_Rekhe_Resume.pdf';
     document.body.appendChild(link);
     link.click();
