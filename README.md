@@ -1,6 +1,6 @@
 # ASR Terminal
 
-A polished, interactive terminal-themed portfolio website for Aditya Surendra Rekhe, built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, and React Icons.
+A polished, interactive terminal-themed portfolio website built with React, TypeScript, Vite, Tailwind CSS, Framer Motion, and React Icons.
 
 ## Features
 
