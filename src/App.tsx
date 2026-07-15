@@ -118,7 +118,7 @@ function App() {
           type: 'system',
         },
       ]);
-    }, 4200);
+    }, 5200);
 
     return () => window.clearTimeout(timer);
   }, []);
@@ -364,17 +364,68 @@ function App() {
                       </motion.div>
                     ))}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.8 }} className="mt-6 space-y-4 text-terminal-accent">
-                      <div className="font-bold text-lg space-y-1 tracking-wider">
-                        <div>  █████╗   ███████╗  ██████╗</div>
-                        <div>  ██╔══██╗  ██╔════╝  ██╔══██╗</div>
-                        <div>  ███████║  ███████╗  ██████╔╝</div>
-                        <div>  ██╔══██║  ╚════██║  ██╔══██╗</div>
-                        <div>  ██║  ██║  ███████║  ██║  ██║</div>
-                        <div>  ╚═╝  ╚═╝  ╚══════╝  ╚═╝  ╚═╝</div>
-                      </div>
-                      <div className="pt-4 text-center space-y-2">
-                        <div className="text-terminal-text font-bold text-lg">Aditya Surendra Rekhe</div>
-                        <div className="text-terminal-secondary text-sm">Software Engineer • Pune, India</div>
+                      <div className="pt-4 text-center space-y-6">
+                        <div className="relative h-12 flex items-center justify-center">
+                          <motion.div
+                            initial={{ opacity: 1, scale: 1 }}
+                            animate={{ opacity: 0, scale: 0.3 }}
+                            transition={{ delay: 0.5, duration: 1.5 }}
+                            className="absolute text-terminal-text"
+                          >
+                            Aditya Surendra Rekhe
+                          </motion.div>
+                          
+                          <div className="flex gap-8 justify-center">
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 1.8, duration: 0.6 }}
+                              className="text-3xl font-bold"
+                            >
+                              A
+                            </motion.div>
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 2.2, duration: 0.6 }}
+                              className="text-3xl font-bold"
+                            >
+                              S
+                            </motion.div>
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 2.6, duration: 0.6 }}
+                              className="text-3xl font-bold"
+                            >
+                              R
+                            </motion.div>
+                          </div>
+                        </div>
+                        
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 3.5, duration: 0.5 }}
+                          className="font-bold text-lg space-y-1 tracking-wider"
+                        >
+                          <div>  █████╗   ███████╗  ██████╗</div>
+                          <div>  ██╔══██╗  ██╔════╝  ██╔══██╗</div>
+                          <div>  ███████║  ███████╗  ██████╔╝</div>
+                          <div>  ██╔══██║  ╚════██║  ██╔══██╗</div>
+                          <div>  ██║  ██║  ███████║  ██║  ██║</div>
+                          <div>  ╚═╝  ╚═╝  ╚══════╝  ╚═╝  ╚═╝</div>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 4.1, duration: 0.5 }}
+                          className="space-y-1"
+                        >
+                          <div className="text-terminal-text font-bold text-lg">Aditya Surendra Rekhe</div>
+                          <div className="text-terminal-secondary text-sm">Software Engineer • Pune, India</div>
+                        </motion.div>
                       </div>
                     </motion.div>
                   </motion.div>
