@@ -7,7 +7,6 @@ import {
   FaCertificate,
   FaChalkboardTeacher,
   FaCheck,
-  FaCode,
   FaCopy,
   FaCubes,
   FaDownload,
@@ -19,7 +18,6 @@ import {
   FaLaptopCode,
   FaLinkedin,
   FaMapMarkerAlt,
-  FaOrcid,
   FaPhoneAlt,
   FaShieldAlt,
   FaTerminal,
@@ -53,7 +51,6 @@ import { Chip, Reveal, Section, cardClass, ghostButton, primaryButton } from './
 const socialIcons: Record<string, JSX.Element> = {
   GitHub: <FaGithub />,
   LinkedIn: <FaLinkedin />,
-  ORCID: <FaOrcid />,
   GeeksforGeeks: <SiGeeksforgeeks />,
 };
 
@@ -119,7 +116,7 @@ function Hero() {
   const role = useTypewriter(profile.roles);
   const stats = [
     { value: `${projects.length}`, label: 'Projects built' },
-    { value: `${research.length}`, label: research.length === 1 ? 'Research preprint' : 'Research papers' },
+    { value: `${research.length}`, label: research.length === 1 ? 'Research preprint' : 'Research preprints' },
     { value: `${certifications.length}`, label: 'Certifications' },
     { value: '8.68', label: 'B.E. CGPA' },
   ];
@@ -203,7 +200,7 @@ function Hero() {
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {focusAreas.map((area, index) => {
-          const icons = [<FaBrain key="a" />, <FaLaptopCode key="b" />, <FaCubes key="c" />, <FaShieldAlt key="d" />];
+          const icons = [<FaBrain key="a" />, <FaShieldAlt key="b" />, <FaLaptopCode key="c" />, <FaCubes key="d" />];
           return (
             <Reveal key={area.title} delay={0.05 * index}>
               <div className={`${cardClass} h-full p-5`}>
@@ -222,7 +219,7 @@ function Hero() {
 
 function Experience() {
   return (
-    <Section id="experience" command="experience" title="Experience" subtitle="Where I work, and the communities I have led.">
+    <Section id="experience" command="experience" title="Experience" subtitle="Research, industry experience and the communities I have led.">
       <div className="relative space-y-6 border-l border-terminal-accent/25 pl-6 sm:pl-8">
         {experience.map((job) => (
           <Reveal key={job.org} className="relative">
@@ -384,10 +381,15 @@ function Research() {
   const { copied, copy } = useCopy();
 
   return (
-    <Section id="research" command="research" title="Research" subtitle="Independent research on evidence-grounded AI systems.">
+    <Section
+      id="research"
+      command="research"
+      title="Research"
+      subtitle="Sole-authored preprints on digital identity security and evidence-grounded AI systems."
+    >
       <div className="space-y-6">
         {research.map((paper) => (
-          <Reveal key={paper.doi}>
+          <Reveal key={paper.id}>
             <article className={`${cardClass} overflow-hidden`}>
               <div className="border-b border-terminal-accent/15 bg-terminal-accent/5 px-5 py-3 sm:px-7">
                 <div className="flex flex-wrap items-center gap-2">
@@ -395,43 +397,36 @@ function Research() {
                   <Chip>
                     {paper.venue} · {paper.year}
                   </Chip>
-                  <Chip>Not peer reviewed</Chip>
+                  <Chip>Sole author</Chip>
                 </div>
               </div>
               <div className="p-5 sm:p-7">
                 <h3 className="font-mono text-lg font-semibold leading-7 text-terminal-accent sm:text-xl sm:leading-8">{paper.title}</h3>
                 <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 font-sans text-sm text-terminal-text/80">
                   <span className="font-medium text-terminal-text">{paper.authors}</span>
-                  <a
-                    href={paper.orcid}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="ORCID profile"
-                    className="text-base text-terminal-link transition hover:text-terminal-accent"
-                  >
-                    <FaOrcid />
-                  </a>
                   <span className="text-terminal-accent/40">·</span>
                   <span>{paper.affiliation}</span>
                 </div>
 
-                <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+                <div className="mt-6 grid gap-8 lg:grid-cols-[1.1fr_1fr]">
                   <div>
-                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-terminal-secondary">Abstract</h4>
-                    <p className="mt-3 font-sans text-sm leading-7 text-terminal-text/75 sm:text-[15px]">{paper.abstract}</p>
-                    <div className="mt-5 flex flex-wrap gap-1.5">
-                      {paper.keywords.map((keyword) => (
-                        <Chip key={keyword}>{keyword}</Chip>
-                      ))}
-                    </div>
+                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-terminal-secondary">Summary</h4>
+                    <p className="mt-3 font-sans text-sm leading-7 text-terminal-text/75 sm:text-[15px]">{paper.summary}</p>
+                    {paper.keywords && (
+                      <div className="mt-5 flex flex-wrap gap-1.5">
+                        {paper.keywords.map((keyword) => (
+                          <Chip key={keyword}>{keyword}</Chip>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <div>
-                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-terminal-secondary">Key findings</h4>
+                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-terminal-secondary">Highlights</h4>
                     <ul className="mt-3 space-y-3 font-sans text-sm leading-6 text-terminal-text/75">
-                      {paper.findings.map((finding, index) => (
-                        <li key={finding} className="flex gap-3">
+                      {paper.highlights.map((item, index) => (
+                        <li key={item} className="flex gap-3">
                           <span className="shrink-0 font-mono text-terminal-accent">0{index + 1}</span>
-                          <span>{finding}</span>
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -439,48 +434,49 @@ function Research() {
                 </div>
 
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <a href={paper.doiUrl} target="_blank" rel="noreferrer" className={primaryButton}>
-                    <FaFileAlt /> Read the preprint
+                  <a href={paper.paperUrl} target="_blank" rel="noreferrer" className={primaryButton}>
+                    <FaFileAlt /> Read on Zenodo
                   </a>
                   <a href={paper.codeUrl} target="_blank" rel="noreferrer" className={ghostButton}>
-                    <FaGithub /> Code
-                  </a>
-                  <a href={paper.softwareDoiUrl} target="_blank" rel="noreferrer" className={ghostButton}>
-                    <FaExternalLinkAlt className="text-xs" /> Software DOI
+                    {paper.codeUrl.includes('github.com') ? <FaGithub /> : <FaExternalLinkAlt className="text-xs" />} Code
                   </a>
                 </div>
 
                 <dl className="mt-6 grid gap-x-8 gap-y-2 font-mono text-xs leading-6 text-terminal-secondary sm:grid-cols-2">
                   <div className="flex gap-2">
-                    <dt className="shrink-0 text-terminal-accent">DOI</dt>
-                    <dd className="break-all">{paper.doi}</dd>
+                    <dt className="shrink-0 text-terminal-accent">Zenodo</dt>
+                    <dd className="break-all">{paper.paperLabel}</dd>
                   </div>
-                  <div className="flex gap-2">
-                    <dt className="shrink-0 text-terminal-accent">License</dt>
-                    <dd>{paper.license}</dd>
-                  </div>
+                  {paper.license && (
+                    <div className="flex gap-2">
+                      <dt className="shrink-0 text-terminal-accent">License</dt>
+                      <dd>{paper.license}</dd>
+                    </div>
+                  )}
                 </dl>
 
-                <details className="group mt-5 rounded-lg border border-terminal-accent/15 bg-black/40">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-mono text-xs text-terminal-secondary transition hover:text-terminal-accent sm:text-sm [&::-webkit-details-marker]:hidden">
-                    <span>
-                      <span className="text-terminal-accent">$</span> cat citation.bib
-                    </span>
-                    <span className="text-terminal-accent transition group-open:rotate-90">›</span>
-                  </summary>
-                  <div className="relative border-t border-terminal-accent/15">
-                    <button
-                      type="button"
-                      onClick={() => copy(paper.doi, paper.bibtex)}
-                      className="absolute right-2 top-2 inline-flex items-center gap-1.5 rounded border border-terminal-accent/30 bg-terminal-bg px-2 py-1 font-mono text-[11px] text-terminal-accent transition hover:bg-terminal-accent/15"
-                    >
-                      {copied === paper.doi ? <FaCheck /> : <FaCopy />} {copied === paper.doi ? 'Copied' : 'Copy'}
-                    </button>
-                    <pre className="term-scroll m-0 overflow-x-auto p-4 pt-10 font-mono text-[11px] leading-5 text-terminal-text/80 sm:text-xs">
-                      {paper.bibtex}
-                    </pre>
-                  </div>
-                </details>
+                {paper.bibtex && (
+                  <details className="group mt-5 rounded-lg border border-terminal-accent/15 bg-black/40">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-mono text-xs text-terminal-secondary transition hover:text-terminal-accent sm:text-sm [&::-webkit-details-marker]:hidden">
+                      <span>
+                        <span className="text-terminal-accent">$</span> cat citation.bib
+                      </span>
+                      <span className="text-terminal-accent transition group-open:rotate-90">›</span>
+                    </summary>
+                    <div className="relative border-t border-terminal-accent/15">
+                      <button
+                        type="button"
+                        onClick={() => copy(paper.id, paper.bibtex ?? '')}
+                        className="absolute right-2 top-2 inline-flex items-center gap-1.5 rounded border border-terminal-accent/30 bg-terminal-bg px-2 py-1 font-mono text-[11px] text-terminal-accent transition hover:bg-terminal-accent/15"
+                      >
+                        {copied === paper.id ? <FaCheck /> : <FaCopy />} {copied === paper.id ? 'Copied' : 'Copy'}
+                      </button>
+                      <pre className="term-scroll m-0 overflow-x-auto p-4 pt-10 font-mono text-[11px] leading-5 text-terminal-text/80 sm:text-xs">
+                        {paper.bibtex}
+                      </pre>
+                    </div>
+                  </details>
+                )}
               </div>
             </article>
           </Reveal>
@@ -492,9 +488,8 @@ function Research() {
 
 const certIcons: Record<Certification['type'], JSX.Element> = {
   Course: <FaCertificate />,
-  Internship: <FaBriefcase />,
-  Hackathon: <FaCode />,
-  Workshop: <FaChalkboardTeacher />,
+  Award: <FaTrophy />,
+  'Guest Lecture': <FaChalkboardTeacher />,
 };
 
 function Certifications() {
@@ -503,9 +498,9 @@ function Certifications() {
       id="certifications"
       command="certifications"
       title="Certifications"
-      subtitle="Courses, internships, hackathons and workshops I have completed."
+      subtitle="Certificates for courses completed, awards won and lectures delivered."
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {certifications.map((cert, index) => (
           <Reveal key={cert.title} delay={index * 0.05}>
             <article className={`${cardClass} flex h-full gap-4 p-5`}>
@@ -532,7 +527,7 @@ function Certifications() {
 function Skills() {
   return (
     <Section id="skills" command="skills" title="Skills" subtitle="Languages, frameworks and tools I work with.">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {skills.map((group, index) => (
           <Reveal key={group.category} delay={index * 0.04}>
             <div className={`${cardClass} h-full p-5`}>
@@ -612,10 +607,10 @@ function Education() {
               <h4 className="flex items-center gap-2 font-mono text-[15px] font-semibold text-terminal-text">
                 <FaChalkboardTeacher className="text-terminal-accent" /> Workshops
               </h4>
-              <p className="mt-2 font-sans text-sm leading-6 text-terminal-text/65">{workshops.conducted}</p>
-              {workshops.attended.map((item) => (
+              <p className="mt-2 font-sans text-sm leading-6 text-terminal-text/65">{workshops.summary}</p>
+              {workshops.conducted.map((item) => (
                 <p key={item.title} className="mt-2 font-sans text-sm leading-6 text-terminal-text/65">
-                  <span className="text-terminal-text/90">Attended: {item.title}</span> ({item.where}, {item.date}).
+                  <span className="text-terminal-text/90">&ldquo;{item.title}&rdquo;</span> — {item.where}, {item.date}.
                 </p>
               ))}
             </article>

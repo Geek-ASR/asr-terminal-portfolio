@@ -23,7 +23,7 @@ export const profile = {
   availability: 'Open to ambitious product engineering and systems work.',
   summary:
     "I'm a Software Engineer from Pune, India. I enjoy building products where AI, web development, blockchain and system design intersect.",
-  now: 'Currently at Stratacent Technologies, working across production infrastructure, security operations and GenAI applications. Outside work I build full-stack products and do independent research on AI systems.',
+  now: 'Currently an independent researcher, building adversarial evaluation infrastructure for cryptographic credential verification and for retrieval-based fact-checking systems. Previously a Software Engineer at Stratacent Technologies.',
 } as const;
 
 export interface SocialLink {
@@ -39,7 +39,6 @@ export const socials: SocialLink[] = [
     label: 'linkedin.com/in/aditya-rekhe-94b27122a',
     url: 'https://www.linkedin.com/in/aditya-rekhe-94b27122a/',
   },
-  { name: 'ORCID', label: 'orcid.org/0009-0003-8009-3074', url: 'https://orcid.org/0009-0003-8009-3074' },
   {
     name: 'GeeksforGeeks',
     label: 'geeksforgeeks.org/user/adityare545t',
@@ -57,19 +56,19 @@ export interface FocusArea {
 export const focusAreas: FocusArea[] = [
   {
     title: 'AI & GenAI',
-    text: 'LLM pipelines, retrieval-augmented generation and AI-assisted products, from a fact-checking research pipeline to a GenAI chatbot at work.',
+    text: 'Machine learning, NLP and retrieval-augmented generation, from an evidence-grounded fact-checking pipeline to a GenAI chatbot built at work.',
+  },
+  {
+    title: 'Security Research',
+    text: 'Applied cryptography and adversarial evaluation of digital identity credential libraries, with coordinated vulnerability disclosure.',
   },
   {
     title: 'Full-Stack Web',
-    text: 'React, Next.js and Node.js applications with clean APIs, real-time features and well-structured databases.',
+    text: 'React, Next.js and Node.js applications with clean APIs, real-time features, tested code and well-structured databases.',
   },
   {
     title: 'Blockchain',
-    text: 'Solidity smart contracts, NFTs and IPFS-backed dApps. Honours specialization and hackathon wins in blockchain technology.',
-  },
-  {
-    title: 'Systems & Security',
-    text: 'Incident management, root cause analysis and infrastructure troubleshooting on production-scale systems.',
+    text: 'Solidity smart contracts, NFTs and IPFS-backed dApps. Hackathon prize winner and guest lecturer on blockchain technology.',
   },
 ];
 
@@ -89,8 +88,8 @@ export const education: EducationItem[] = [
     affiliation: 'Savitribai Phule Pune University (SPPU)',
     degree: 'Bachelor of Engineering (Computer Engineering)',
     short: 'B.E. Computer Engineering',
-    period: '2021 – 2025',
-    score: 'CGPA 8.68',
+    period: 'Oct 2021 – Jul 2025',
+    score: 'CGPA 8.68 / 10',
     notes: ['20-credit Honours specialization in Blockchain Technology'],
   },
   {
@@ -120,18 +119,27 @@ export interface ExperienceItem {
 
 export const experience: ExperienceItem[] = [
   {
+    org: 'Self-directed research',
+    role: 'Independent Researcher',
+    period: 'May 2026 – Present',
+    location: 'Pune, India',
+    summary: 'Adversarial Evaluation • Applied Cryptography • Digital Identity • Fact-Checking Systems • Vulnerability Disclosure',
+    points: [
+      'Designed and built adversarial evaluation infrastructure for cryptographic credential verification and for retrieval-based fact-checking systems.',
+      'Ran coordinated vulnerability disclosure with open-source maintainers; prepared a specification-level submission for the relevant standards body.',
+    ],
+  },
+  {
     org: 'Stratacent Technologies Pvt. Ltd.',
     role: 'Software Engineer',
-    period: 'Sept 2025 – Present',
+    period: 'Sep 2025 – Apr 2026',
     location: 'Pune, India',
-    summary:
-      'Incident Management • RCA • Infrastructure Troubleshooting • Cybersecurity Operations • GenAI Internal Chatbot',
+    summary: 'Incident Management • RCA • Infrastructure Troubleshooting • Cybersecurity Operations • GenAI Internal Chatbot',
     points: [
-      'Handle incident management across database, cybersecurity and infrastructure domains in production environments.',
-      'Perform root cause analysis (RCA) for critical system failures and operational incidents.',
-      'Contributed to the development of a GenAI-powered internal chatbot system.',
-      'Work with cross-functional teams to improve system reliability, issue resolution and operational workflows.',
-      'Gained exposure to production-scale systems, security operations and infrastructure troubleshooting.',
+      'Handled incident management across database, cybersecurity and infrastructure domains in production environments.',
+      'Performed root cause analysis for critical system failures and operational incidents.',
+      'Contributed to development of a GenAI-powered internal chatbot system.',
+      'Worked with cross-functional teams to improve system reliability and operational workflows.',
     ],
   },
 ];
@@ -145,7 +153,7 @@ export interface LeadershipItem {
 
 export const leadership: LeadershipItem[] = [
   {
-    org: 'Google Developer Groups (GDG)',
+    org: 'Google Developer Groups (GDG) student chapter',
     role: 'Blockchain Lead',
     period: 'Mar 2023 – Feb 2025',
     text: 'Conducted blockchain workshops and sessions, driving hands-on learning and developer engagement.',
@@ -179,20 +187,70 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: 'Aheadly',
+    domain: 'Student Mentorship Marketplace',
+    period: '2026',
+    description:
+      'A two-sided marketplace connecting students with mentors for career and study-abroad guidance, designed end to end: market research, system architecture, database and API design.',
+    highlights: [
+      '580 automated tests across unit, real-Postgres integration and multi-browser E2E testing, with GitHub Actions, CodeQL and dependency scanning.',
+      'Secured using STRIDE, OWASP Top 10 / API Top 10 and ASVS Level 2, with verification, fraud prevention and dispute handling.',
+    ],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'PostgreSQL', 'Drizzle ORM', 'Tailwind CSS v4', 'Vitest', 'Playwright', 'GitHub Actions'],
+    categories: ['Web'],
+    github: 'https://github.com/Geek-ASR/MentorshipPlatform',
+    demo: 'https://geek-asr.github.io/MentorshipPlatform/',
+    featured: true,
+  },
+  {
+    name: 'NeuralCraft',
+    domain: 'Interactive 3D Playground for Learning AI/ML',
+    period: '2026',
+    description:
+      'A browser-based 3D voxel-world playground that teaches AI, ML and data science through 36 lessons and 6 interactive labs: gradient descent, k-means, neural networks, embeddings and Q-learning.',
+    highlights: [
+      'Code sandbox with Blockly, Python and JavaScript.',
+      '3D environment with dynamic lighting and A* pathfinding.',
+      'Local-first XP and badge system, deployed free with no backend.',
+    ],
+    stack: ['TypeScript', 'Vite', 'Three.js', 'Blockly', 'CodeMirror 6', 'Pyodide', 'Web Audio API', 'Vitest'],
+    categories: ['AI', 'Web'],
+    github: 'https://github.com/Geek-ASR/Trial-AI_Playground',
+    demo: 'https://geek-asr.github.io/Trial-AI_Playground/',
+    team: 'Solo',
+    featured: true,
+  },
+  {
+    name: 'CareCircle',
+    domain: 'Community Platform for Chronic Illness',
+    period: '2026',
+    description:
+      'A community platform unifying forum discussion, real-time chat, Q&A and condition tracking for people managing chronic illness, with dedicated communities per condition and support for comorbidities.',
+    highlights: [
+      'Authentication, row-level security and realtime features built on Supabase.',
+      'Deployed serverless via GitHub Pages, with CI/CD running lint, test, build and migration checks on every PR.',
+    ],
+    stack: ['React 19', 'TypeScript', 'Tailwind CSS', 'Zustand', 'TanStack Query', 'Supabase (Auth, Postgres / RLS, Realtime)'],
+    categories: ['Web'],
+    github: 'https://github.com/Geek-ASR/care-circle',
+    demo: 'https://geek-asr.github.io/care-circle/',
+    featured: true,
+  },
+  {
     name: 'TruthLens',
     domain: 'AI Fact-Checking Pipeline',
     period: '2026',
     description:
       'An evidence-first pipeline for fact-checking short-form political video and image posts. It decomposes a post into atomic claims, researches each against the open web, and subjects every generated verdict to a deterministic, non-LLM validator before anything is published.',
     highlights: [
-      'Ten-stage pipeline: ingestion (download, transcribe, OCR) → claim extraction → research planning → evidence retrieval → stance analysis → verdict → deterministic validation → aggregation → carousel rendering → human-approved publishing.',
+      'Multi-stage pipeline: ingestion (download, transcribe, OCR) → claim extraction → research planning → evidence retrieval → stance analysis → verdict → deterministic validation → aggregation → human-approved publishing.',
       'Every LLM stage runs on local models by default: no API key and no per-token cost.',
       'Released with a preprint and the 202-item TruthLens-202 evaluation corpus.',
     ],
     stack: ['Python', 'FastAPI', 'Next.js', 'PostgreSQL / pgvector', 'Redis', 'Ollama', 'faster-whisper', 'Docker'],
     categories: ['AI'],
     github: 'https://github.com/Geek-ASR/truthlens',
-    paper: 'https://doi.org/10.5281/zenodo.22758785',
+    paper: 'https://zenodo.org/records/22758785',
     team: 'Solo',
     featured: true,
   },
@@ -255,22 +313,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: 'CareCircle',
-    domain: 'Chronic-Illness Community Platform',
-    period: '2026',
-    description:
-      'A community platform for people living with chronic illness: every illness, not just one. Members join communities for their conditions, post and comment, ask questions, chat in real time and find people who understand what they are dealing with.',
-    highlights: [
-      'Community structure, real-time chat and a Q&A format in a single product.',
-      'Static frontend on GitHub Pages with the backend entirely on Supabase (Auth, Postgres with row-level security, Realtime, Storage).',
-    ],
-    stack: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Radix UI', 'TanStack Query', 'Zustand', 'Supabase'],
-    categories: ['Web'],
-    github: 'https://github.com/Geek-ASR/care-circle',
-    demo: 'https://geek-asr.github.io/care-circle/',
-    featured: true,
-  },
-  {
     name: 'Govt. ITI (Women), Thane — Website & Smart Campus',
     domain: 'Institute Website & Campus Portal',
     period: '2026',
@@ -288,23 +330,6 @@ export const projects: Project[] = [
     demo: 'https://geek-asr.github.io/iti-thane-women/',
   },
   {
-    name: 'NeuralCraft',
-    domain: '3D Playground for Learning AI',
-    period: '2026',
-    description:
-      'A free, browser-based 3D playground for learning AI, machine learning and data science through interactive experiments. Walk around a small voxel world, visit different labs, write real code and see the results visually.',
-    highlights: [
-      '36 lessons, from math and statistics to neural networks, embeddings, attention and reinforcement learning.',
-      'Six interactive labs: Gradient Descent, Galton Board, K-Means, Neural Network / MNIST, Embeddings and Q-Learning.',
-      'A sandbox for building structures with Blockly, Python or JavaScript. No backend, account or tracking.',
-    ],
-    stack: ['TypeScript', 'Three.js', 'Vite', 'Blockly', 'CodeMirror 6', 'Pyodide', 'Web Audio API', 'Vitest'],
-    categories: ['AI', 'Web'],
-    github: 'https://github.com/Geek-ASR/Trial-AI_Playground',
-    demo: 'https://geek-asr.github.io/Trial-AI_Playground/',
-    team: 'Solo',
-  },
-  {
     name: 'DeutschPfad',
     domain: 'German-Learning Website',
     period: '2026',
@@ -319,20 +344,6 @@ export const projects: Project[] = [
     github: 'https://github.com/Geek-ASR/deutschpfad',
     demo: 'https://geek-asr.github.io/deutschpfad/',
     team: 'Solo',
-  },
-  {
-    name: 'Mentorship Platform',
-    domain: 'Student Mentorship Marketplace',
-    period: '2026 · In development',
-    description:
-      'A student mentorship marketplace for career and study-abroad guidance: a low-cost, trustworthy place where students get practical guidance from people who have already done the thing they are preparing for.',
-    highlights: [
-      'Free knowledge and live events, affordable group sessions and paid 1-on-1 sessions on one engine.',
-      'Designed docs-first: architecture, booking, payments, trust & safety and threat model.',
-    ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Drizzle ORM', 'PostgreSQL', 'Tailwind CSS', 'Vitest', 'Playwright'],
-    categories: ['Web'],
-    github: 'https://github.com/Geek-ASR/MentorshipPlatform',
   },
   {
     name: 'VedKarn',
@@ -380,43 +391,61 @@ export const projects: Project[] = [
 ];
 
 export interface ResearchPaper {
-  shortName: string;
+  id: string;
   title: string;
   authors: string;
   affiliation: string;
-  orcid: string;
   venue: string;
   year: string;
   status: string;
-  abstract: string;
-  findings: string[];
-  keywords: string[];
-  doi: string;
-  doiUrl: string;
-  softwareDoi: string;
-  softwareDoiUrl: string;
+  summary: string;
+  highlights: string[];
+  keywords?: string[];
+  /** Zenodo record for the preprint. */
+  paperUrl: string;
+  paperLabel: string;
   codeUrl: string;
-  license: string;
-  bibtex: string;
+  codeLabel: string;
+  license?: string;
+  bibtex?: string;
 }
 
 export const research: ResearchPaper[] = [
   {
-    shortName: 'TruthLens',
+    id: 'eudi',
+    title: 'Differential Security Analysis of EU Digital Identity Credential Libraries',
+    authors: 'Aditya Rekhe',
+    affiliation: 'Independent Researcher',
+    venue: 'Zenodo',
+    year: '2026',
+    status: 'Sole-authored preprint',
+    summary:
+      'To the best of my knowledge, the first systematic differential and adversarial evaluation of the libraries implementing the two credential formats mandated for the EU Digital Identity Wallet under eIDAS 2.0.',
+    highlights: [
+      'Developed 30 clause-based validation rules and 40 adversarial test cases, run against 7 implementations across 6 codebases in three programming languages (122 evaluations).',
+      'Found implementation-specific security and standards-compliance issues and prepared the findings for responsible disclosure.',
+    ],
+    keywords: ['EU Digital Identity Wallet', 'eIDAS 2.0', 'verifiable credentials', 'differential testing', 'adversarial testing', 'applied cryptography'],
+    paperUrl: 'https://zenodo.org/records/22884803',
+    paperLabel: 'zenodo.org/records/22884803',
+    codeUrl: 'https://drive.google.com/drive/folders/1jesQOI-XralDSthlgV8PkvZ-7DChFF4I?usp=sharing',
+    codeLabel: 'Google Drive folder',
+  },
+  {
+    id: 'truthlens',
     title:
       'TruthLens: A Verification-Gated Pipeline for Evidence-Grounded Fact-Checking of Short-Form Political Video',
     authors: 'Aditya Rekhe',
     affiliation: 'Independent Researcher',
-    orcid: 'https://orcid.org/0009-0003-8009-3074',
     venue: 'Zenodo',
     year: '2026',
-    status: 'Research preprint (not peer reviewed)',
-    abstract:
-      'TruthLens is an evidence-first pipeline for fact-checking short-form political video and image posts. It decomposes a post into atomic claims, researches each against the open web, and subjects every generated verdict to a deterministic, non-LLM validator before publication. The release includes the preprint, the 202-item TruthLens-202 evaluation corpus (URLs, labels and annotations only), and the supplementary results and protocols needed to reproduce the reported numbers.',
-    findings: [
-      "A deterministic, non-LLM validator checks that a verdict's citations exist, its sources were actually fetched, its numbers are grounded in retrieved evidence and its label does not contradict its own reasoning. A verdict that fails is downgraded, not published.",
-      'Results are reported as an honest floor for a deliberately minimal, zero-cost, local-only configuration, not as a headline capability.',
-      'Diagnostic finding: claim extraction, not retrieval, gates whether a post gets checked at all.',
+    status: 'Sole-authored preprint',
+    summary:
+      'TruthLens is an evidence-first pipeline for fact-checking short-form political video and image posts. It decomposes a post into atomic claims, researches each against the open web, and subjects every generated verdict to a deterministic, non-LLM validator before publication.',
+    highlights: [
+      'Built a multi-stage pipeline that retrieves sources, verifies claims, and requires supporting evidence before producing a verdict.',
+      'Defined support validity and showed it is separable from label accuracy: validator recall improved from 16.7% to 40% at 100% precision.',
+      'Developed a 202-item benchmark based on professionally fact-checked short-form videos and evaluated the system using a separate validation layer.',
     ],
     keywords: [
       'automated fact-checking',
@@ -426,13 +455,11 @@ export const research: ResearchPaper[] = [
       'retrieval-augmented generation',
       'evaluation benchmark',
       'large language models',
-      'computational journalism',
     ],
-    doi: '10.5281/zenodo.22758785',
-    doiUrl: 'https://doi.org/10.5281/zenodo.22758785',
-    softwareDoi: '10.5281/zenodo.22758976',
-    softwareDoiUrl: 'https://doi.org/10.5281/zenodo.22758976',
+    paperUrl: 'https://zenodo.org/records/22758785',
+    paperLabel: 'zenodo.org/records/22758785',
     codeUrl: 'https://github.com/Geek-ASR/truthlens',
+    codeLabel: 'github.com/Geek-ASR/truthlens',
     license: 'Paper and dataset: CC BY 4.0 · Code: MIT',
     bibtex: `@misc{rekhe2026truthlens,
   author    = {Rekhe, Aditya},
@@ -452,11 +479,27 @@ export interface Certification {
   title: string;
   issuer: string;
   date: string;
-  type: 'Course' | 'Internship' | 'Hackathon' | 'Workshop';
+  type: 'Course' | 'Award' | 'Guest Lecture';
   description: string;
 }
 
 export const certifications: Certification[] = [
+  {
+    title: 'Third Position — Blockchain Hackathon',
+    issuer: 'Symbiosis Institute of Technology (SIT), Pune · Cyber Blockchain Club with India Blockchain Alliance (IBA)',
+    date: 'Sep 2023',
+    type: 'Award',
+    description:
+      'Certificate of Appreciation for winning the 3rd position in the hackathon held on 17–18 September 2023 in collaboration with IBA (India Blockchain Alliance).',
+  },
+  {
+    title: 'Resource Person — Blockchain Technology Workshop',
+    issuer: "Dnyanprassarak Mandal's College and Research Centre (DMC), Goa",
+    date: 'Jul 2024',
+    type: 'Guest Lecture',
+    description:
+      'Invited by the Department of Computer Science to conduct the online workshop "Understanding and applying the Concepts of Blockchain Technology" for T.Y.B.Sc. Computer Science students on 31 July 2024. Received a Letter of Gratitude from the college.',
+  },
   {
     title: 'Networking Basics',
     issuer: 'Cisco Networking Academy',
@@ -464,28 +507,6 @@ export const certifications: Certification[] = [
     type: 'Course',
     description:
       'Certificate of Course Completion: network communication, standards and protocols, Ethernet, IPv4 / IPv6 addressing, routing and troubleshooting network connectivity.',
-  },
-  {
-    title: 'Frontend Web Development Internship',
-    issuer: 'VirtualIntern',
-    date: 'Jan 2024',
-    type: 'Internship',
-    description: 'Internship Completion Certificate for the one-month Frontend Web Development program.',
-  },
-  {
-    title: 'DevClash Hackathon',
-    issuer: 'DevKraft · Dr. D. Y. Patil Institute of Technology, Pimpri',
-    date: 'Feb 2024',
-    type: 'Hackathon',
-    description: 'Certificate of Participation for solving real-world tech challenges in the DevClash hackathon.',
-  },
-  {
-    title: 'Blockchain Bootcamp',
-    issuer: 'SIT Pune',
-    date: 'Jun 2023',
-    type: 'Workshop',
-    description:
-      'Hands-on workshop on blockchain technology, cryptocurrencies, smart contracts, Ethereum, Hyperledger and decentralized application (dApp) architecture.',
   },
 ];
 
@@ -500,32 +521,22 @@ export const skills: SkillGroup[] = [
   {
     category: 'Languages',
     short: 'Languages',
-    items: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript', 'Solidity', 'HTML', 'CSS'],
+    items: ['Python', 'C', 'C++', 'Java', 'JavaScript', 'TypeScript', 'Solidity', 'SQL'],
   },
   {
-    category: 'Web Development',
-    short: 'Web',
-    items: ['React', 'Next.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'REST APIs', 'FastAPI', 'WebRTC'],
+    category: 'Security',
+    short: 'Security',
+    items: ['Applied cryptography', 'Smart contracts', 'Digital forensics'],
   },
   {
-    category: 'AI & GenAI',
-    short: 'AI',
-    items: ['LangChain', 'Gemini API', 'Retrieval-Augmented Generation', 'Local LLMs (Ollama)'],
+    category: 'ML & Data',
+    short: 'ML & Data',
+    items: ['Machine learning', 'Deep learning', 'NLP', 'Retrieval-augmented generation', 'LangChain', 'LLM orchestration'],
   },
   {
-    category: 'Blockchain',
-    short: 'Blockchain',
-    items: ['Ethereum', 'Smart Contracts', 'Hardhat', 'Remix IDE', 'Ethers.js', 'NFTs', 'IPFS'],
-  },
-  {
-    category: 'Databases',
-    short: 'Databases',
-    items: ['MongoDB', 'SQL', 'PostgreSQL', 'Supabase', 'Firebase'],
-  },
-  {
-    category: 'Tools',
-    short: 'Tools',
-    items: ['Git', 'GitHub', 'Docker', 'VS Code', 'Figma', 'Canva'],
+    category: 'Frameworks & Technologies',
+    short: 'Frameworks',
+    items: ['React.js', 'Node.js', 'FastAPI', 'Next.js', 'MongoDB', 'PostgreSQL', 'pgvector', 'IPFS', 'WebRTC', 'REST API design'],
   },
 ];
 
@@ -537,34 +548,33 @@ export interface Achievement {
 
 export const achievements: Achievement[] = [
   {
-    title: 'Third Prize — Intercollege Blockchain Hackathon',
-    detail: 'Hackathon on blockchain technology held by All India Blockchain Alliance.',
-    date: 'Sept 2023',
+    title: 'Third Prize — Intercollegiate Blockchain Hackathon',
+    detail: 'Hackathon held at Symbiosis Institute of Technology, Pune, in collaboration with India Blockchain Alliance (IBA).',
+    date: 'Sep 2023',
   },
   {
-    title: 'Selected for Unfold 2023',
-    detail: "Selected for and participated in Unfold@2023, one of India's biggest blockchain hackathons.",
+    title: 'Selected Participant — Unfold 2023',
+    detail: "Selected for Unfold 2023, among India's largest blockchain hackathons.",
     date: 'Dec 2023',
   },
   {
-    title: '20-Credit Honours in Blockchain Technology',
-    detail: 'Completed a 20-credit Honours specialization alongside the B.E. degree.',
+    title: 'Guest Lecturer — Blockchain Workshops',
+    detail: 'Conducted blockchain and dApp development workshops at multiple universities.',
   },
   {
-    title: 'Guest Lecturer — Blockchain Workshops',
-    detail: 'Conducted workshops on blockchain technology and dApps at multiple universities.',
+    title: 'Blockchain Lead — Google Developer Groups',
+    detail: 'Led the blockchain track of the Google Developer Groups (GDG) student chapter.',
+    date: 'Mar 2023 – Feb 2025',
   },
 ];
 
 export const workshops = {
-  conducted:
-    'Delivered blockchain and dApp workshops at multiple universities as a guest lecturer, and mentored students as Blockchain Lead at GDG.',
-  attended: [
+  summary: 'Conducted blockchain and dApp development workshops at multiple universities as a guest lecturer.',
+  conducted: [
     {
-      title: 'Blockchain Bootcamp',
-      where: 'SIT Pune · organized by Saurabh Tiwari',
-      date: 'June 2023',
-      text: 'Foundations of blockchain technology, cryptocurrencies, smart contracts, Ethereum, Hyperledger and dApp architecture through a hands-on workshop.',
+      title: 'Understanding and applying the Concepts of Blockchain Technology',
+      where: "Dnyanprassarak Mandal's College and Research Centre (DMC), Goa · online workshop for T.Y.B.Sc. Computer Science students",
+      date: '31 July 2024',
     },
   ],
 };

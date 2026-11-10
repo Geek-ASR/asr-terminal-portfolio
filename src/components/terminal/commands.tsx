@@ -35,7 +35,7 @@ export const portfolioCommands: [name: string, description: string][] = [
   ['about', 'who I am'],
   ['experience', 'work experience'],
   ['projects', 'things I have built'],
-  ['research', 'my research paper'],
+  ['research', 'my research papers'],
   ['certifications', 'certificates I hold'],
   ['skills', 'technical skills'],
   ['education', 'academic background'],
@@ -346,7 +346,7 @@ export function runCommand(raw: string, ctx: CommandContext): ReactNode {
       return (
         <div className="space-y-4">
           {research.map((paper, index) => (
-            <div key={paper.doi} className="space-y-2">
+            <div key={paper.id} className="space-y-2">
               <div>
                 <Dim>[{index + 1}]</Dim> <Key>{paper.title}</Key>
               </div>
@@ -357,22 +357,17 @@ export function runCommand(raw: string, ctx: CommandContext): ReactNode {
                 {paper.venue} · {paper.year} · {paper.status}
               </div>
               <div>
-                <Key>DOI:</Key> <Ext href={paper.doiUrl}>{paper.doi}</Ext>
+                <Key>Zenodo:</Key> <Ext href={paper.paperUrl}>{paper.paperLabel}</Ext>
               </div>
               <div>
-                <Key>Code:</Key> <Ext href={paper.codeUrl}>{paper.codeUrl.replace('https://', '')}</Ext>
+                <Key>Code:</Key> <Ext href={paper.codeUrl}>{paper.codeLabel}</Ext>
               </div>
-              <div>
-                <Key>Key findings:</Key>
-              </div>
-              <Bullets items={paper.findings} />
-              <div>
-                <Key>Keywords:</Key> {paper.keywords.join(', ')}
-              </div>
+              <div>{paper.summary}</div>
+              <Bullets items={paper.highlights} />
             </div>
           ))}
           <div className="text-xs text-terminal-secondary">
-            Abstract and BibTeX are in the GUI — run <Cmd name="gui" /> or scroll down.
+            More detail is in the GUI — run <Cmd name="gui" /> or scroll down.
           </div>
         </div>
       );
@@ -446,12 +441,10 @@ export function runCommand(raw: string, ctx: CommandContext): ReactNode {
     case 'workshops':
       return (
         <div className="space-y-2">
-          <div>
-            <Key>Conducted:</Key> {workshops.conducted}
-          </div>
-          {workshops.attended.map((item) => (
+          <div>{workshops.summary}</div>
+          {workshops.conducted.map((item) => (
             <div key={item.title}>
-              <Key>Attended:</Key> {item.title} — {item.where} ({item.date}). {item.text}
+              <Key>Conducted:</Key> "{item.title}" — {item.where} ({item.date}).
             </div>
           ))}
         </div>
@@ -596,7 +589,7 @@ export function runCommand(raw: string, ctx: CommandContext): ReactNode {
               <Key>Projects:</Key> {projects.length}
             </div>
             <div>
-              <Key>Research:</Key> {research.length} preprint
+              <Key>Research:</Key> {research.length} preprints
             </div>
             <div>
               <Key>Experience:</Key> {profile.role}
