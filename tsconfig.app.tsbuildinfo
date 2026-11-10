@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx"],"version":"5.9.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/ProjectModal.tsx","./src/components/ScrollHint.tsx","./src/components/gui/Gui.tsx","./src/components/gui/Nav.tsx","./src/components/gui/primitives.tsx","./src/components/terminal/Terminal.tsx","./src/components/terminal/commands.tsx","./src/data/portfolio.ts","./src/lib/utils.ts"],"version":"5.9.3"}

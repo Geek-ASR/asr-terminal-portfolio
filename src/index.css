@@ -1,25 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Theme tokens (space-separated RGB so Tailwind opacity modifiers work). */
+:root,
+:root[data-theme='green'] {
+  --t-bg: 11 15 12;
+  --t-text: 201 255 213;
+  --t-accent: 0 255 136;
+  --t-secondary: 110 231 183;
+  --t-link: 79 209 197;
+}
+
+:root[data-theme='ubuntu'] {
+  --t-bg: 48 10 36;
+  --t-text: 245 240 242;
+  --t-accent: 255 122 69;
+  --t-secondary: 246 178 150;
+  --t-link: 135 206 235;
+}
+
+:root[data-theme='hacker'] {
+  --t-bg: 0 0 0;
+  --t-text: 0 255 65;
+  --t-accent: 0 255 65;
+  --t-secondary: 57 211 83;
+  --t-link: 150 255 170;
+}
+
+:root[data-theme='dracula'] {
+  --t-bg: 40 42 54;
+  --t-text: 248 248 242;
+  --t-accent: 189 147 249;
+  --t-secondary: 255 121 198;
+  --t-link: 139 233 253;
+}
+
+:root[data-theme='nord'] {
+  --t-bg: 46 52 64;
+  --t-text: 216 222 233;
+  --t-accent: 136 192 208;
+  --t-secondary: 129 161 193;
+  --t-link: 143 188 187;
+}
+
+:root[data-theme='retro'] {
+  --t-bg: 24 16 0;
+  --t-text: 255 224 170;
+  --t-accent: 255 176 0;
+  --t-secondary: 240 230 140;
+  --t-link: 255 204 102;
+}
+
 :root {
-  color: #C9FFD5;
-  background-color: #0B0F0C;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: rgb(var(--t-text));
+  background-color: rgb(var(--t-bg));
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, rgba(0,255,136,0.08), transparent 45%), #0B0F0C;
-  color: #C9FFD5;
-  overflow: auto;
+  background: rgb(var(--t-bg));
+  color: rgb(var(--t-text));
+  overflow-x: hidden;
 }
 
 * {
@@ -27,13 +81,60 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 255, 136, 0.35);
-  color: #0B0F0C;
+  background: rgb(var(--t-accent) / 0.35);
+  color: #fff;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid rgb(var(--t-accent) / 0.8);
+    outline-offset: 2px;
+  }
+}
+
+/* Full-height first screen that respects mobile browser chrome. */
+.screen-h {
+  height: 100vh;
+  height: 100svh;
+}
+
+/* Thin themed scrollbars for the terminal panes. */
+.term-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--t-accent) / 0.35) transparent;
+}
+
+.term-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.term-scroll::-webkit-scrollbar-thumb {
+  background: rgb(var(--t-accent) / 0.3);
+  border-radius: 999px;
+}
+
+.term-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .cursor-blink {
@@ -44,13 +145,106 @@ body {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.03),
-    rgba(255,255,255,0.03) 1px,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
     transparent 1px,
     transparent 3px
   );
   opacity: 0.15;
+}
+
+/* A command inside terminal output that can be clicked to run. */
+.cmd-link {
+  color: rgb(var(--t-accent));
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgb(var(--t-accent) / 0.45);
+  text-underline-offset: 4px;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cmd-link:hover,
+.cmd-link:active {
+  background: rgb(var(--t-accent) / 0.16);
+  text-decoration-style: solid;
+}
+
+/* "Scroll down for GUI" hint: letters light up in a travelling wave. */
+@keyframes hint-wave {
+  0%,
+  60%,
+  100% {
+    opacity: 0.5;
+    transform: translateY(0);
+    text-shadow: none;
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+    text-shadow: 0 0 12px rgb(var(--t-accent) / 0.9);
+  }
+}
+
+.hint-letter {
+  display: inline-block;
+  white-space: pre;
+  animation: hint-wave 2.6s ease-in-out infinite;
+}
+
+@keyframes hint-chevron {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+.hint-chevron {
+  animation: hint-chevron 1.6s ease-in-out infinite;
+}
+
+/* Subtle grid behind the GUI part of the page. */
+.gui-grid {
+  background-image:
+    linear-gradient(rgb(var(--t-accent) / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--t-accent) / 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hint-letter,
+  .hint-chevron,
+  .cursor-blink {
+    animation: none;
+  }
+
+  .hint-letter {
+    opacity: 0.85;
+  }
 }

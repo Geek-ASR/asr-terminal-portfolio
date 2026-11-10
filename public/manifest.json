@@ -1,13 +1,14 @@
 {
-  "name": "ASR Terminal",
+  "name": "ASR Terminal — Aditya Surendra Rekhe",
   "short_name": "ASR",
-  "start_url": "/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#0B0F0C",
   "theme_color": "#0B0F0C",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
